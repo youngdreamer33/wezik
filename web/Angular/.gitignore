@@ -1,3 +1,7 @@
 node_modules
 .DS_Store
 db.json
+/morceau.json
+/playlist.json
+/tag.json
+/user.json
