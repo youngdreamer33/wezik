@@ -4,7 +4,9 @@ namespace WeZikBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use WeZikBundle\Entity\User;
-use WeZikBundle\Entity\Morceau;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class DefaultController extends Controller
 {
@@ -16,22 +18,13 @@ class DefaultController extends Controller
     public function converToJSONAction()
     {
 
-        //recupération de l'USER
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findAll();
 
-        // convertir l'objet USER en tableau
-        $arrayUser = (array) $user;
-        var_dump((array) $user);
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $myJSON = $serializer->serialize($user, 'json');
 
-        // convertir l'objet en JSON
-        $myJSON = json_encode($arrayUser);
-        var_dump($myJSON);
         file_put_contents('myfile.json', $myJSON);
-
-        // decoder le JSON
-        // $decode=json_decode($myJSON);
-        // var_dump($decode);
 
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
