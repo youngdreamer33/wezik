@@ -33,15 +33,7 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
   };
   var results = [];
   var createdplaylist = [];
-  var upcoming = [
-    {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
-    {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
-    {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
-    {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
-    {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
-    {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
-    {id: 'fTK4XTvZWmk', title: 'Housse De Racket â˜â˜€â˜ Apocalypso'}
-  ];
+  var upcoming = [];
   // var history = [
   //   {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
   // ];
@@ -56,9 +48,9 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
 
   function onYoutubeReady (event) {
     $log.info('YouTube Player is ready');
-    youtube.player.cueVideoById(history[0].id);
-    youtube.videoId = history[0].id;
-    youtube.videoTitle = history[0].title;
+    // youtube.player.cueVideoById(history[0].id);
+    // youtube.videoId = history[0].id;
+    // youtube.videoTitle = history[0].title;
   }
 
   function onYoutubeStateChange (event) {
@@ -126,19 +118,19 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
     return results;
   }
 
-  this.savePlaylist = function (data) {
-    createdplaylist.length = 0;
-    for (var i = data.items.length - 1; i >= 0; i--) {
-      createdplaylist.push({
-        id: data.items[i].id.videoId,
-        title: data.items[i].snippet.title,
-        description: data.items[i].snippet.description,
-        thumbnail: data.items[i].snippet.thumbnails.default.url,
-        author: data.items[i].snippet.channelTitle
-      });
-    }
-    return createdplaylist;
-  }
+  // this.savePlaylist = function (data) {
+  //   createdplaylist.length = 0;
+  //   for (var i = data.items.length - 1; i >= 0; i--) {
+  //     createdplaylist.push({
+  //       id: data.items[i].id.videoId,
+  //       title: data.items[i].snippet.title,
+  //       description: data.items[i].snippet.description,
+  //       thumbnail: data.items[i].snippet.thumbnails.default.url,
+  //       author: data.items[i].snippet.channelTitle
+  //     });
+  //   }
+  //   return createdplaylist;
+  // }
 
   this.queueVideo = function (id, title) {
     upcoming.push({
@@ -153,16 +145,16 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
       id: id,
       title: title
     });
-    return playlist;
+    return createdplaylist;
   };
 
-  this.archiveVideo = function (id, title) {
-    history.unshift({
-      id: id,
-      title: title
-    });
-    return history;
-  };
+  // this.archiveVideo = function (id, title) {
+  //   history.unshift({
+  //     id: id,
+  //     title: title
+  //   });
+  //   return history;
+  // };
 
   this.deleteVideo = function (list, id) {
     for (var i = list.length - 1; i >= 0; i--) {
@@ -205,14 +197,14 @@ app.controller('VideosController', function ($scope, $http, $log, VideosService)
       $scope.youtube = VideosService.getYoutube();
       $scope.results = VideosService.getResults();
       $scope.upcoming = VideosService.getUpcoming();
-      $scope.history = VideosService.getHistory();
+      // $scope.history = VideosService.getHistory();
       $scope.createdplaylist = VideosService.getCreatedPlaylist();
       $scope.playlist = true;
     }
 
     $scope.launch = function (id, title) {
       VideosService.launchPlayer(id, title);
-      VideosService.archiveVideo(id, title);
+      // VideosService.archiveVideo(id, title);
       VideosService.deleteVideo($scope.upcoming, id);
       $log.info('Launched id:' + id + ' and title:' + title);
     };
@@ -226,7 +218,7 @@ app.controller('VideosController', function ($scope, $http, $log, VideosService)
 
     $scope.queue = function (id, title) {
       VideosService.queueVideo(id, title);
-      VideosService.deleteVideo($scope.history, id);
+      // VideosService.deleteVideo($scope.history, id);
       $log.info('Queued id:' + id + ' and title:' + title);
     };
 

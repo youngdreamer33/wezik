@@ -35,28 +35,28 @@
     </div>
     <div id="playlist">
       <p id="current">{{ youtube.videoTitle }}</p>
-      <ol id="upcoming" data-ng-hide="playlist">
+      <ol id="upcoming" data-ng-show="playlist">
         <li data-ng-repeat="video in upcoming">
           <p class="item-delete" data-ng-click="delete('upcoming', video.id)">delete</p>
           <p class="item-title" data-ng-click="launch(video.id, video.title)">{{video.title}}</p>
         </li>
       </ol>
-      <ol id="history" data-ng-hide="playlist">
+      <!--<ol id="history" data-ng-hide="playlist">
         <li data-ng-repeat="video in history">
           <p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>
           <p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>
         </li>
-      </ol>
-      <ol id="createplaylist" data-ng-hide="playlist">
-        <li data-ng-repeat="video in createplaylist">
-          <p class="item-delete" data-ng-click="delete('playlist', video.id)">delete</p>
-          <p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>
+      </ol>-->
+      <ol id="createdplaylist" data-ng-show="playlist">
+        <li data-ng-repeat="video in createdplaylist">
+          <p class="item-delete" data-ng-click="delete('createdplaylist', video.id)">delete</p>
+          <p class="item-title" data-ng-click="save(video.id, video.title)">{{video.title}}</p>
         </li>
       </ol>
       <p id="tabs">
-        <a ng-class="{on:playlist}" data-ng-click="tabulate(false)">Upcoming</a>
-        <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>
-        <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">Playlist</a>
+        <a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>
+        <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
+        <a ng-class="{on:createdplaylist}" data-ng-click="tabulate(false)">Créer Playlist</a>
       </p>
     </div>
     <footer>
