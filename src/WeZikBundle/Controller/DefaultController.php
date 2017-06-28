@@ -4,6 +4,7 @@ namespace WeZikBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use WeZikBundle\Entity\User;
+use WeZikBundle\Entity\Morceau;
 
 class DefaultController extends Controller
 {
@@ -18,15 +19,22 @@ class DefaultController extends Controller
         //recupération de l'USER
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findAll();
+
         // convertir l'objet USER en tableau
         $arrayUser = (array) $user;
         var_dump((array) $user);
+
         // convertir l'objet en JSON
         $myJSON = json_encode($arrayUser);
         var_dump($myJSON);
+
         // decoder le JSON
-        $decode=json_decode($myJSON);
-        var_dump($decode);
+        // $decode=json_decode($myJSON);
+        // var_dump($decode);
+
+        $json_data = json_encode($myJSON);
+        file_put_contents('myfile.json', $json_data);
+
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
 }
