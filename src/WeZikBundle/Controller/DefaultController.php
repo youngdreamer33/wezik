@@ -24,6 +24,7 @@ class DefaultController extends Controller
         $user = $em->getRepository(User::class)->findAll();
         // recuperer Morceau
         $morceau = $em->getRepository(Morceau::class)->findAll();
+
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
         // encodage des entités en JSON
         $userJSON = $serializer->serialize($user, 'json');
