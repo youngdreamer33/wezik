@@ -1,0 +1,102 @@
+<div id="search-field" class="input-field">
+    <input id="search" type="search" name="query" ng-model="$ctrl.query">
+    <label class="label-icon loupe" for="search"><i class="material-icons">search</i></label>
+</div>
+
+<div class="home-img">
+    <h4 class="already-reg">Déjà inscrit?</h4>
+    <div class="row">
+        <div class="input-field col s5 offset-s1">
+            <input type="text" ng-model="$ctrl.user.email">
+            <label>email</label>
+        </div>
+        <div class="input-field col s5">
+            <input type="password" ng-model="$ctrl.user.password">
+            <label>mot de passe</label>
+        </div>
+    </div>
+
+    <h3 class="already-reg">
+        <a ng-click="showDiv = !showDiv" class="register">Inscris toi!</a>
+    </h3>
+    <div ng-show="showDiv">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s5 offset-s1">
+                        <input type="text" ng-model="$ctrl.reg.firstname">
+                        <label>Prénom * {{$ctrl.alert.firstname}}</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input type="text" ng-model="$ctrl.reg.lastname">
+                        <label>Nom *{{$ctrl.alert.lastname}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3 offset-s1">
+                        <input type="text" ng-model="$ctrl.reg.age">
+                        <label>Age *{{$ctrl.alert.age}}</label>
+                    </div>
+                    <div class="input-field col s7">
+                        <input type="email" ng-model="$ctrl.reg.mail">
+                        <label>Mail *{{$ctrl.alert.mail}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3 offset-s1">
+                        <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                        <input type="text" ng-model="$ctrl.reg.social1">
+                        <label for="icon_twitter"></label>
+                    </div>
+                    <div class="input-field col s4">
+                        <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                        <input type="text" ng-model="$ctrl.reg.social2">
+                        <label for="icon_github"></label>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+                        <input type="text" ng-model="$ctrl.reg.social3">
+                        <label for="icon_linkedin"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 offset-s1">
+                        <input type="text" ng-model="$ctrl.reg.mattermost">
+                        <label>mattermost</label>
+                    </div>
+                    <div class="col s4">
+                        <div class="input-field">
+                            <select class="browser-default" ng-options="promo.name for promo in $ctrl.promos track by promo.id" ng-model="$ctrl.promo">
+                        <option value="" disabled selected>Promos *</option>
+                    </select>
+                            <label>{{$ctrl.alert.promo}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s5 offset-s1">
+                        <input type="password" ng-model="$ctrl.reg.password">
+                        <label>password *</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input type="password" ng-model="$ctrl.reg.password2">
+                        <label>password *</label>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+<a ng-if="$ctrl.reg.firstname && $ctrl.reg.lastname && $ctrl.reg.age && $ctrl.reg.mail && $ctrl.reg.password && $ctrl.reg.password2"
+    ng-click="$ctrl.postUser()" class="btn-floating btn-large waves-effect waves-light orange reg-validate" ui-sref="rules"><i class="material-icons">check_circle</i></a>
+
+    </form>
+</div>
+
+
+<p>{{$ctrl.errorMessage}}</p>
+
+<a ng-if="$ctrl.user.email && $ctrl.user.password" ng-click="$ctrl.submit($ctrl.user)" class="btn-floating btn-large waves-effect waves-light orange reg-validate"><i class="material-icons">check_circle</i></a>
+
+<a class="back-home" ui-sref="home">retour accueil</a>
+</div>
