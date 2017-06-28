@@ -35,6 +35,10 @@ class Playlist
      */
     private $visibilite;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Morceau", inversedBy="playlists", cascade={"persist"})
+     */
+    private $morceaux;
 
     /**
      * Get id

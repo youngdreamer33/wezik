@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -18,31 +19,48 @@ class DefaultController extends Controller
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
 
-    public function converToJSONAction()
+
+    public function userToJSONAction()
     {
-
         $em = $this->getDoctrine()->getManager();
-        // recuperer User
         $user = $em->getRepository(User::class)->findAll();
-        // recuperer Morceau
-        $morceau = $em->getRepository(Morceau::class)->findAll();
-        // recuperer Playlist
-        $playlist = $em->getRepository(Playlist::class)->findAll();
-        // recuperer Tag
-        $tag = $em->getRepository(Tag::class)->findAll();
-
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
-        // encodage des entités en JSON
         $userJSON = $serializer->serialize($user, 'json');
-        $morceauJSON = $serializer->serialize($morceau, 'json');
-        $playlistJSON = $serializer->serialize($playlist, 'json');
-        $tagJSON = $serializer->serialize($tag, 'json');
-        // creation des fichiers JSON
-        file_put_contents('Angular/morceau.json', $morceauJSON);
-        file_put_contents('Angular/user.json', $userJSON);
-        file_put_contents('Angular/playlist.json', $playlistJSON);
-        file_put_contents('Angular/tag.json', $tagJSON);
+        file_put_contents('user.json', $userJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($userJSON));
+        return $response;
+    }
 
-        return $this->render('WeZikBundle:Default:index.html.twig');
+    public function morceauToJSONAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $morceau = $em->getRepository(Morceau::class)->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $morceauJSON = $serializer->serialize($morceau, 'json');
+        file_put_contents('morceau.json', $morceauJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($morceauJSON));
+        return $response;
+    }
+
+    public function playlistToJSONAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $playlist = $em->getRepository(Playlist::class)->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $playlistJSON = $serializer->serialize($playlist, 'json');
+        file_put_contents('playlist.json', $playlistJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($playlistJSON));
+        return $response;
+    }
+
+    public function tagToJSONAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tag = $em->getRepository(Tag::class)->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $tagJSON = $serializer->serialize($tag, 'json');
+        file_put_contents('tag.json', $tagJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($tagJSON));
+        return $response;
     }
 }
