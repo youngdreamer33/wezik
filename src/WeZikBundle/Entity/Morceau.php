@@ -29,7 +29,7 @@ class Morceau
     private $titre;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Playlist", mappedBy="morceaux", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="morceaux", cascade={"persist"})
      */
     private $playlists;
 
