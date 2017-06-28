@@ -29,6 +29,10 @@ class User extends BaseUser
         // your own logic
     }
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="users", cascade={"persist"})
+     */
+    private $playlists;
 
     /**
      * Get id
