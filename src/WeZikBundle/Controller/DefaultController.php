@@ -18,8 +18,12 @@ class DefaultController extends Controller
         //$user = New User();
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findAll();
-        var_dump($user);
-        $myJSON = json_encode($user);
+        $arrayUser = (array) $user;
+        var_dump((array) $user);
+        $myJSON = json_encode($arrayUser);
+        var_dump($myJSON);
+        $decode=json_decode($myJSON);
+        var_dump($decode);
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
 }
