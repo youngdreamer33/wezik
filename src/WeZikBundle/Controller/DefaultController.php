@@ -63,4 +63,29 @@ class DefaultController extends Controller
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($tagJSON));
         return $response;
     }
+
+    public function addToPlaylistAction()
+    {
+        return 0;
+    }
+
+    public function retireFromPlaylistAction()
+    {
+        return 0;
+    }
+
+    public function playJSONAction(Morceau $morceau, Playlist $playlist=null)
+    {
+        return 0;
+    }
+
+    public function showUserAction()
+    {
+        return 0;
+    }
+
+    public function showTagAction()
+    {
+        return 0;
+    }
 }
