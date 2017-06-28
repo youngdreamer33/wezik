@@ -1,0 +1,81 @@
+<div class="home-img">
+<label class="labal-myProfile">Avatar
+    <input type="text" ng-value="$ctrl.user.avatar" ng-model="$ctrl.change.avatar">
+    </label>
+<div class="row">
+    <div class="col s4">
+        <label class="labal-myProfile">Prénom
+            <input type="text" ng-value="$ctrl.user.firstname" ng-model="$ctrl.change.firstname">
+        </label>
+    </div>
+    <div class="col s4">
+        <label class="labal-myProfile">Nom
+            <input type="text" ng-value="$ctrl.user.lastname" ng-model="$ctrl.change.lastname">
+        </label>
+    </div>
+    <div class="col s4">
+        <label class="labal-myProfile">Age
+            <input type="text" ng-value="$ctrl.user.age" ng-model="$ctrl.change.age">
+        </label>
+    </div>
+</div>
+<div class="row">
+    <label class="labal-myProfile">Bio
+        <input type="text" ng-value="$ctrl.user.bio" ng-model="$ctrl.change.bio">
+    </label>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label class="labal-myProfile">Mattermost
+        <input type="text" ng-value="$ctrl.user.mattermost" ng-model="$ctrl.change.mattermost">
+        </label>
+    </div>
+    <div class="col s3">
+        <label class="labal-myProfile">social1
+            <input type="text" ng-value="$ctrl.user.social1" ng-model="$ctrl.change.social1">
+        </label>
+    </div>
+    <div class="col s3">
+        <label class="labal-myProfile">social2
+            <input type="text" ng-value="$ctrl.user.social2" ng-model="$ctrl.change.social2">
+        </label>
+    </div>
+    <div class="col s3">
+        <label class="labal-myProfile">social3
+            <input type="text" ng-value="$ctrl.user.social3" ng-model="$ctrl.change.social3">
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6">
+        <label class="labal-myProfile">Email
+            <input type="text" ng-value="$ctrl.user.mail" ng-model="$ctrl.change.mail">
+        </label>
+    </div>
+    <div class="col s6">
+        <label class="labal-myProfile">Mot De Passe
+            <input type="text" ng-value="$ctrl.user.password" ng-model="$ctrl.change.password">
+        </label>
+    </div>
+</div>
+<div class="row">
+    <a ng-click="$ctrl.modif()" ui-sref="profile({userId:$ctrl.currentUser.id})" class="btn-floating btn-large waves-effect waves-light orange reg-validate"><i class="material-icons">check_circle</i></a>
+</div>
+<div class="row">
+    <a ui-sref="home" class="back-home">accueil</a>
+</div>
+</div>
+<!--
+<label>Avatar<input type="text" ng-value="$ctrl.user.avatar" ng-model="$ctrl.change.avatar"></label>
+<label>Prénom<input type="text" ng-value="$ctrl.user.firstname" ng-model="$ctrl.change.firstname"></label>
+<label>Nom<input type="text" ng-value="$ctrl.user.lastname" ng-model="$ctrl.change.lastname"></label>
+<label>Age<input type="text" ng-value="$ctrl.user.age" ng-model="$ctrl.change.age"></label>
+<label>Mattermost<input type="text" ng-value="$ctrl.user.mattermost" ng-model="$ctrl.change.mattermost"></label>
+<label>social1<input type="text" ng-value="$ctrl.user.social1" ng-model="$ctrl.change.social1"></label>
+<label>social2<input type="text" ng-value="$ctrl.user.social2" ng-model="$ctrl.change.social2"></label>
+<label>social3<input type="text" ng-value="$ctrl.user.social3" ng-model="$ctrl.change.social3"></label>
+<label>Email<input type="text" ng-value="$ctrl.user.mail" ng-model="$ctrl.change.mail"></label>
+<label>Mot De Passe<input type="text" ng-value="$ctrl.user.password" ng-model="$ctrl.change.password"></label>
+<button ng-click="$ctrl.modif()">Modifier</button>
+<a ui-sref="home">accueil</a>-->
+
