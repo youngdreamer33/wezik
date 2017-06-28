@@ -1,3 +1,8 @@
 we_zik_homepage:
     path:     /
     defaults: { _controller: WeZikBundle:Default:index }
+
+we_zik_json:
+    path:     /json
+    defaults: { _controller: WeZikBundle:Default:converToJSON }
+
