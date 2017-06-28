@@ -14,7 +14,22 @@ generate_playlist:
     path:     /playlistG
     defaults: { _controller: WeZikBundle:Default:playlistToJSON }
 
-generate_tag:
-    path:     /tagG
-    defaults: { _controller: WeZikBundle:Default:tagToJSON }
+addToPlaylist:
+    path:     /add/{id_morceau}/{id_playlist}
+    defaults: { _controller: WeZikBundle:Default:addToPlaylist }
 
+retireFromPlaylist:
+    path:     /delete/{id_morceau}/{id_playlist}
+    defaults: { _controller: WeZikBundle:Default:retireFromPlaylist }
+
+playJSON:
+    path:     /play/{id_morceau}/{id_playlist}
+    defaults: { _controller: WeZikBundle:Default:playJSON }
+
+showUser:
+    path:     /profile/{id_user}
+    defaults: { _controller: WeZikBundle:Default:showUser }
+
+showTag:
+    path:     /tags/{id_tag}
+    defaults: { _controller: WeZikBundle:Default:showTag }
