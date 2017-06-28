@@ -27,13 +27,11 @@ class DefaultController extends Controller
         // convertir l'objet en JSON
         $myJSON = json_encode($arrayUser);
         var_dump($myJSON);
+        file_put_contents('myfile.json', $myJSON);
 
         // decoder le JSON
         // $decode=json_decode($myJSON);
         // var_dump($decode);
-
-        $json_data = json_encode($myJSON);
-        file_put_contents('myfile.json', $json_data);
 
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
