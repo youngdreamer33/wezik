@@ -1,4 +1,4 @@
-angular.module("app")
+angular.module('WeZikApp')
 
   .config(function ($stateProvider, $urlRouterProvider) {
 

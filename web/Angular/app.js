@@ -1,12 +1,4 @@
-var app = angular.module('WeZikApp', [
-    "ui.router",
-    "angularUtils.directives.dirPagination",
-    "textAngular",
-    "components",
-    "services",
-    "filters",
-    "ngCookies"
-]);
+var app = angular.module("WeZikApp", []);
 
 // Run
 
