@@ -3,27 +3,27 @@ we_zik_homepage:
     defaults: { _controller: WeZikBundle:Default:index }
 
 generate_user:
-    path:     /userG
+    path:     /user
     defaults: { _controller: WeZikBundle:Default:userToJSON }
 
 generate_morceau:
-    path:     /morceauG
+    path:     /morceau
     defaults: { _controller: WeZikBundle:Default:morceauToJSON }
 
 generate_playlist:
-    path:     /playlistG
+    path:     /playlist
     defaults: { _controller: WeZikBundle:Default:playlistToJSON }
 
 addToPlaylist:
-    path:     /add/{id_morceau}/{id_playlist}
+    path:     /add/{id_playlist}/{id_morceau}
     defaults: { _controller: WeZikBundle:Default:addToPlaylist }
 
 retireFromPlaylist:
-    path:     /delete/{id_morceau}/{id_playlist}
+    path:     /delete/{id_playlist}/{id_morceau}
     defaults: { _controller: WeZikBundle:Default:retireFromPlaylist }
 
 playJSON:
-    path:     /play/{id_morceau}/{id_playlist}
+    path:     /play/{id_playlist}
     defaults: { _controller: WeZikBundle:Default:playJSON }
 
 showUser:
