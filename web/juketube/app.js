@@ -32,7 +32,7 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
     state: 'stopped'
   };
   var results = [];
-  var playlist = [];
+  var createdplaylist = [];
   var upcoming = [
     {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
     {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
@@ -42,9 +42,9 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
     {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
     {id: 'fTK4XTvZWmk', title: 'Housse De Racket â˜â˜€â˜ Apocalypso'}
   ];
-  var history = [
-    {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
-  ];
+  // var history = [
+  //   {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
+  // ];
 
   $window.onYouTubeIframeAPIReady = function () {
     $log.info('Youtube API is ready');
@@ -127,9 +127,9 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
   }
 
   this.savePlaylist = function (data) {
-    playlist.length = 0;
+    createdplaylist.length = 0;
     for (var i = data.items.length - 1; i >= 0; i--) {
-      playlist.push({
+      createdplaylist.push({
         id: data.items[i].id.videoId,
         title: data.items[i].snippet.title,
         description: data.items[i].snippet.description,
@@ -137,7 +137,7 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
         author: data.items[i].snippet.channelTitle
       });
     }
-    return playlist;
+    return createdplaylist;
   }
 
   this.queueVideo = function (id, title) {
@@ -148,8 +148,8 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
     return upcoming;
   };
 
-  this.playlistVideo = function (id, title) {
-    playlist.push({
+  this.saveVideo = function (id, title) {
+    createdplaylist.push({
       id: id,
       title: title
     });
@@ -185,12 +185,12 @@ app.service('VideosService', ['$window', '$rootScope', '$log', function ($window
     return upcoming;
   };
 
-  this.getHistory = function () {
-    return history;
-  };
+  // this.getHistory = function () {
+  //   return history;
+  // };
 
-  this.getPlaylist = function () {
-    return playlist;
+  this.getCreatedPlaylist = function () {
+    return createdplaylist;
   };
 
 }]);
@@ -206,7 +206,7 @@ app.controller('VideosController', function ($scope, $http, $log, VideosService)
       $scope.results = VideosService.getResults();
       $scope.upcoming = VideosService.getUpcoming();
       $scope.history = VideosService.getHistory();
-      $scope.playlist = VideosService.getPlaylist();
+      $scope.createdplaylist = VideosService.getCreatedPlaylist();
       $scope.playlist = true;
     }
 
@@ -218,9 +218,10 @@ app.controller('VideosController', function ($scope, $http, $log, VideosService)
     };
 
     $scope.save = function (id, title) {
-      VideosService.launchPlayer(id, title);
-      VideosService.saveVideo($scope.playlist, id, title);
+      // VideosService.launchPlayer(id, title);
+      VideosService.saveVideo($scope.createdplaylist, id, title);
       $log.info('Saved id:' + id + ' and title:' + title);
+      $log.info($scope.createdplaylist);
     };
 
     $scope.queue = function (id, title) {
