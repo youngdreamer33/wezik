@@ -1,4 +1,4 @@
-angular.module("WeZikApp")
+angular.module('app')
 
   .run(function (AuthService, $log, $state, $transitions) {
 
