@@ -29,6 +29,13 @@ class Morceau
     private $titre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="morceaux", cascade={"persist"})
      */
     private $playlists;
