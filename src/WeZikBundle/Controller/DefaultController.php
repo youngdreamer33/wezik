@@ -71,6 +71,7 @@ class DefaultController extends Controller
 
     public function retireFromPlaylistAction()
     {
+
         return 0;
     }
 

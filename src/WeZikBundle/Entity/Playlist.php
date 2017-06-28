@@ -40,10 +40,6 @@ class Playlist
      */
     private $morceaux;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="playlists", cascade={"persist"})
-     */
-    private $users;
 
 
     /**
