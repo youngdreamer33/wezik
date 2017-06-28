@@ -42,6 +42,16 @@ class User
      */
     private $email;
 
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="users", cascade={"persist"})
+     */
+    private $playlists;
 
     /**
      * Get id
