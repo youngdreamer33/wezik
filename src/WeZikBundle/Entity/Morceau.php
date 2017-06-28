@@ -28,6 +28,10 @@ class Morceau
      */
     private $titre;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Playlist", mappedBy="morceaux", cascade={"persist"})
+     */
+    private $playlists;
 
     /**
      * Get id

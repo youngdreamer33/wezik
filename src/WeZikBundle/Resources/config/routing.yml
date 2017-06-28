@@ -2,7 +2,19 @@ we_zik_homepage:
     path:     /
     defaults: { _controller: WeZikBundle:Default:index }
 
-we_zik_json:
-    path:     /json
-    defaults: { _controller: WeZikBundle:Default:converToJSON }
+generate_user:
+    path:     /userG
+    defaults: { _controller: WeZikBundle:Default:userToJSON }
+
+generate_morceau:
+    path:     /morceauG
+    defaults: { _controller: WeZikBundle:Default:morceauToJSON }
+
+generate_playlist:
+    path:     /playlistG
+    defaults: { _controller: WeZikBundle:Default:playlistToJSON }
+
+generate_tag:
+    path:     /tagG
+    defaults: { _controller: WeZikBundle:Default:tagToJSON }
 
