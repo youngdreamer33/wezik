@@ -144,13 +144,10 @@ class DefaultController extends Controller
     public function getPlaylistAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $jsondata = json_decode($request->request);
-        $playlist = $em->getRepository('WeZikBundle:Playlist')->findOneBy(Playlist::class);
-        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
-        $playlistJSON = $serializer->serialize($playlist, 'json');
-        file_put_contents('playlist.json', $playlistJSON);
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($playlistJSON));
-        return $response;
+        //$jsondata = json_decode($request->request);
+        $playlist = $em->getRepository('WeZikBundle:Playlist')->findOneById('1');
+
+        return new JsonResponse(array('Playlist' => 1, 'Error' => false));
     }
 
     //Fonction pour récuperer toutes les playlists
