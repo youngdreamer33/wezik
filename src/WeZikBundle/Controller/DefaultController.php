@@ -121,6 +121,20 @@ class DefaultController extends Controller
         return new JsonResponse(array('valeur 1' => 123, 'valeur 2' => true));
     }
 
+    //Recevoir un faux morceau et l'enregistrer
+    public function generateFakeAction($titre, $url="http://google.fr")
+    {
+        $em = $this->getDoctrine()->getManager();
+        $morceau = New Morceau();
+        $morceau->setTitre($titre);
+        $morceau->setUrl($url);
+        $id=$morceau->getId();
+        $em->persist($morceau);
+        $em->flush();
+        return new JsonResponse(array('id' => $id, 'titre' => $titre, 'url' => $url));
+    }
+
+
     //Foncion pour Jouer un Morceau
     public function playJSONAction(Morceau $morceau, Playlist $playlist=null)
     {

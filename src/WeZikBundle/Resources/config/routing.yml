@@ -42,34 +42,38 @@ test123:
     path:     /test
     defaults: { _controller: WeZikBundle:Default:testReturn123 }
 
-getPlaylistAction:
+getPlaylist:
     path:     /get/playlist/{id_playlist}
     defaults: { _controller: WeZikBundle:Default:getPlaylist }
 
-getAllPlaylistsAction:
+getAllPlaylists:
     path:     /get/playlists
     defaults: { _controller: WeZikBundle:Default:getAllPlaylists }
 
-getTaglistAction:
+getTaglist:
     path:     /get/tag/{id_taglist}
     defaults: { _controller: WeZikBundle:Default:getTaglist }
 
-getAllTaglistsAction:
+getAllTaglists:
     path:     /get/taglists
     defaults: { _controller: WeZikBundle:Default:getAllTaglists }
 
-getMorceauAction:
+getMorceau:
     path:     /get/morceau/{id_morceau}
     defaults: { _controller: WeZikBundle:Default:getMorceau }
 
-getAllMorceauxAction:
+getAllMorceaux:
     path:     /get/morceaux
     defaults: { _controller: WeZikBundle:Default:getAllMorceaux }
 
-getUserAction:
+getUser:
     path:     /get/user/{id_user}
     defaults: { _controller: WeZikBundle:Default:getUser }
 
-getAllUsersAction:
+getAllUsers:
     path:     /get/users
     defaults: { _controller: WeZikBundle:Default:getAllUsers }
+
+generateFakeMorceau:
+    path:     /generateM/{titre}/{url}
+    defaults: { _controller: WeZikBundle:Default:generateFake }
