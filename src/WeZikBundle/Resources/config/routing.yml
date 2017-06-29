@@ -82,6 +82,11 @@ getAllUsers:
     path:     /get/users
     defaults: { _controller: WeZikBundle:Default:getAllUsers }
 
-generateFakeMorceau:
-    path:     /generateM/{titre}/{url}
-    defaults: { _controller: WeZikBundle:Default:generateFake }
+MorceauPersist:
+    path:     /morceau/persist
+    defaults: { _controller: WeZikBundle:Default:morceauPersist }
+
+
+UserPersist:
+    path:     /user/persist
+    defaults: { _controller: WeZikBundle:Default:userPersist }

@@ -121,17 +121,50 @@ class DefaultController extends Controller
     }
 
     //Recevoir un faux morceau et l'enregistrer
-    public function generateFakeAction($titre, $url="http://google.fr")
-    {
+    public function morceauPersistAction(){
+        $json="{\"id\":1,\"titre\":\"Logic - 1-800-273-8255 ft. Alessia Cara & Khalid \",\"url\":\"https:\\\/\\\/www.youtube.com\\\/watch?v=cycUHgg0zzU\"}";
+        $array=json_decode($json, true);
+        $test= implode('#',$array);
+        $res= explode('#',$test);
+       // $em = $this->getDoctrine()->getManager();
+        $titre=$res[1];
+        $url= $res[2];
+        var_dump($titre);
+        var_dump($url);
         $em = $this->getDoctrine()->getManager();
         $morceau = New Morceau();
         $morceau->setTitre($titre);
         $morceau->setUrl($url);
-        $id=$morceau->getId();
+        $morceau->getId();
         $em->persist($morceau);
         $em->flush();
-        return new JsonResponse(array('id' => $id, 'titre' => $titre, 'url' => $url));
+        return new JsonResponse(array('valeur 1' => 123, 'valeur 2' => true));
+
     }
+
+    public function userPersistAction(){
+        $json="{\"id\":1,\"username\":\"Logic\",\"password\":\"test\",\"email\":\"test@g.f\"}";
+        $array=json_decode($json, true);
+        $test= implode('#',$array);
+        $res= explode('#',$test);
+        // $em = $this->getDoctrine()->getManager();
+        $username=$res[1];
+        $password= $res[2];
+        $email=$res[3];
+        var_dump($username);
+        var_dump($password);
+        $em = $this->getDoctrine()->getManager();
+        $user = New User();
+        $user->setUsername($username);
+        $user->setPassword($password);
+        $user->setEmail($email);
+        $user->getId();
+        $em->persist($user);
+        $em->flush();
+        return new JsonResponse(array('valeur 1' => 123, 'valeur 2' => true));
+
+    }
+
 
 
     //Foncion pour Jouer un Morceau
