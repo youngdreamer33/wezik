@@ -151,6 +151,7 @@ class DefaultController extends Controller
         return $response;
     }
 
+
     //Fonction pour récuperer toutes les playlists
     //Et les renvoyer sous format JSON ( dans un seul fichier )
     public function getAllPlaylistsAction(Request $request)
@@ -164,4 +165,46 @@ class DefaultController extends Controller
         return $response;
     }
 
+    public function getMorceauAction(Request $request, $id_morceau=1)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $morceau= $em->getRepository('WeZikBundle:Morceau')->find($id_morceau);
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json'=> new JsonEncoder()));
+        $morceauJSON= $serializer->serialize($morceau,'json');
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($morceauJSON));
+        return $response;
+    }
+
+    public function getAllMorceauxAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $morceaux = $em->getRepository('WeZikBundle:Morceau')->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $morceauxJSON = $serializer->serialize($morceaux, 'json');
+        file_put_contents('morceaux.json', $morceauxJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($morceauxJSON));
+        return $response;
+    }
+
+
+    public function getUserAction(Request $request, $id_user=1)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user= $em->getRepository('WeZikBundle:User')->find($id_user);
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json'=> new JsonEncoder()));
+        $userJSON= $serializer->serialize($user,'json');
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($userJSON));
+        return $response;
+    }
+
+    public function getAllUsersAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('WeZikBundle:User')->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $usersJSON = $serializer->serialize($users, 'json');
+        file_put_contents('users.json', $usersJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($usersJSON));
+        return $response;
+    }
 }
