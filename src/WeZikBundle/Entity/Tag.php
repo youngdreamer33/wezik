@@ -28,6 +28,11 @@ class Tag
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="tags")
+     * @ORM\JoinTable(name="tag_playlist")
+     */
+    private $playlists;
 
     /**
      * Get id
@@ -62,5 +67,5 @@ class Tag
     {
         return $this->name;
     }
-}
 
+}

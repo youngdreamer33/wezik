@@ -134,5 +134,38 @@ class User
     {
         return $this->email;
     }
-}
 
+    /**
+     * Add playlist
+     *
+     * @param \WeZikBundle\Entity\Playlist $playlist
+     *
+     * @return User
+     */
+    public function addPlaylist(\WeZikBundle\Entity\Playlist $playlist)
+    {
+        $this->playlists[] = $playlist;
+
+        return $this;
+    }
+
+    /**
+     * Remove playlist
+     *
+     * @param \WeZikBundle\Entity\Playlist $playlist
+     */
+    public function removePlaylist(\WeZikBundle\Entity\Playlist $playlist)
+    {
+        $this->playlists->removeElement($playlist);
+    }
+
+    /**
+     * Get playlists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlaylists()
+    {
+        return $this->playlists;
+    }
+}

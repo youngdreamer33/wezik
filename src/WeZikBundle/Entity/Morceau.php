@@ -73,5 +73,82 @@ class Morceau
     {
         return $this->titre;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Morceau
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Add playlist
+     *
+     * @param \WeZikBundle\Entity\Playlist $playlist
+     *
+     * @return Morceau
+     */
+    public function addPlaylist(\WeZikBundle\Entity\Playlist $playlist)
+    {
+        $this->playlists[] = $playlist;
+
+        return $this;
+    }
+
+    /**
+     * Remove playlist
+     *
+     * @param \WeZikBundle\Entity\Playlist $playlist
+     */
+    public function removePlaylist(\WeZikBundle\Entity\Playlist $playlist)
+    {
+        $this->playlists->removeElement($playlist);
+    }
+
+    /**
+     * Get playlists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlaylists()
+    {
+        return $this->playlists;
+    }
+
+    /**
+     * Set playlist
+     *
+     * @param \WeZikBundle\Entity\Playlist $playlist
+     *
+     * @return Morceau
+     */
+    public function setPlaylist(\WeZikBundle\Entity\Playlist $playlist = null)
+    {
+        $this->playlist = $playlist;
+        return $this;
+    }
+}
