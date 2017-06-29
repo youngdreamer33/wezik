@@ -141,13 +141,12 @@ class DefaultController extends Controller
 
     //Fonction pour récuperer une playlist
     //Et la renvoyer sous format JSON
-    public function getPlaylistAction(Request $request)
+    public function getPlaylistAction(Request $request, $id=2)
     {
         $em = $this->getDoctrine()->getManager();
-        //$jsondata = json_decode($request->request);
-        $playlist = $em->getRepository('WeZikBundle:Playlist')->findOneById('1');
-
-        return new JsonResponse(array('Playlist' => 1, 'Error' => false));
+        $playlist = $em->getRepository('WeZikBundle:Playlist')->find($id);
+        var_dump($playlist);
+        return new JsonResponse(array($playlist, 'Error' => false));
     }
 
     //Fonction pour récuperer toutes les playlists
