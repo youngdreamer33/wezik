@@ -130,16 +130,6 @@ class Morceau
     }
 
     /**
-     * Get playlists
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlaylists()
-    {
-        return $this->playlists;
-    }
-
-    /**
      * Set playlist
      *
      * @param \WeZikBundle\Entity\Playlist $playlist

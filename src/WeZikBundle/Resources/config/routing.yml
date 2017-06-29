@@ -10,6 +10,10 @@ generate_morceau:
     path:     /morceau
     defaults: { _controller: WeZikBundle:Default:morceauToJSON }
 
+generate_tag:
+    path:     /tag
+    defaults: { _controller: WeZikBundle:Default:tagToJSON }
+
 generate_playlist:
     path:     /playlist
     defaults: { _controller: WeZikBundle:Default:playlistToJSON }
