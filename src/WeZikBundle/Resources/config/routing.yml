@@ -49,3 +49,19 @@ getPlaylistAction:
 getAllPlaylistsAction:
     path:     /get/playlists
     defaults: { _controller: WeZikBundle:Default:getAllPlaylists }
+
+getMorceauAction:
+    path:     /get/morceau/{id_morceau}
+    defaults: { _controller: WeZikBundle:Default:getMorceau }
+
+getAllMorceauxAction:
+    path:     /get/morceaux
+    defaults: { _controller: WeZikBundle:Default:getAllMorceaux }
+
+getUserAction:
+    path:     /get/user/{id_user}
+    defaults: { _controller: WeZikBundle:Default:getUser }
+
+getAllUsersAction:
+    path:     /get/users
+    defaults: { _controller: WeZikBundle:Default:getAllUsers }
