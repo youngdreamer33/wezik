@@ -6,8 +6,7 @@
     <meta name="author" content="J. Thomas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
   </head>
   <body data-ng-controller="VideosController">
     <header>
@@ -35,6 +34,16 @@
     </div>
     <div id="playlist">
       <p id="current">{{ youtube.videoTitle }}</p>
+
+      <ol id="createdplaylist" data-ng-show="playlist">
+        <li data-ng-repeat="video in savedvideos">
+          <p class="item-delete" data-ng-click="delete('savedvideos', video.id)">delete</p>
+          <p class="item-title" data-ng-click="launch(video.id, video.title)">{{video.title}}</p>
+        </li>
+        <button data-ng-click="savePlaylist(savedvideo.id)">Create playlist</button>
+      </ol>
+      
+
       <ol id="upcoming" data-ng-show="playlist">
         <li data-ng-repeat="video in upcoming">
           <p class="item-delete" data-ng-click="delete('upcoming', video.id)">delete</p>
@@ -47,21 +56,16 @@
           <p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>
         </li>
       </ol>-->
-      <ol id="createdplaylist" data-ng-show="playlist">
-        <li data-ng-repeat="video in createdplaylist">
-          <p class="item-delete" data-ng-click="delete('createdplaylist', video.id)">delete</p>
-          <p class="item-title" data-ng-click="save(video.id, video.title)">{{video.title}}</p>
-        </li>
-      </ol>
+
+
+
       <p id="tabs">
-        <a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>
+        <a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Créer Playlist</a>
+        <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">Upcoming</a>
         <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
-        <a ng-class="{on:createdplaylist}" data-ng-click="tabulate(false)">Créer Playlist</a>
       </p>
     </div>
     <footer>
-      <em>Concept &amp; Design: <a href="http://jgthms.com">J. Thomas</a></em>
-      Built with <a href="http://angularjs.org/">AngularJS</a>. Source code available on <a href="https://github.com/jgthms/juketube">GitHub</a>.
     </footer>
     <script src="angular.min.js"></script>
     <script src="angular-local-storage.js"></script>

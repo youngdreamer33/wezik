@@ -1,0 +1,30 @@
+{
+  "name": "JukeTubeApp",
+  "version": "1.0.0",
+  "description": "juke-tube-app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngdreamer33/wezik.git"
+  },
+  "author": "fourco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youngdreamer33/wezik/issues"
+  },
+  "homepage": "https://github.com/youngdreamer33/wezik#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-cookies": "^1.6.4",
+    "angular-material": "^1.1.3",
+    "@uirouter/angularjs": "^1.0.0-rc.1",
+    "angular-utils-pagination": "^0.11.1",
+    "textangular": "^1.5.16",
+    "angular-local-storage": "0.6.0"
+  }
+}
