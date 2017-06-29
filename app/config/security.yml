@@ -26,3 +26,6 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                remember_me: true
+                default_target_path: info
+                always_use_default_target_path: true

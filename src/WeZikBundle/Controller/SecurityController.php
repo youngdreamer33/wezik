@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 use WeZikBundle\Entity\User;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 class SecurityController extends Controller
 {
     public function loginAction(Request $request)
@@ -27,6 +28,8 @@ class SecurityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $em->getUsername();
-        return $this->renderView('@WeZik/Security/info.html.twig');//, array('user' => $user));
+        return $this->render('@WeZik/Security/info.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
     }
 }
