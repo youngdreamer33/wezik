@@ -30,7 +30,7 @@ class DefaultController extends Controller
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
         $userJSON = $serializer->serialize($user, 'json');
 
-        $file = '{"'."User".':"'.$userJSON."}";
+        $file = '{"'."User".'":'.$userJSON."}";
 
 
         file_put_contents('user.json', $file);
@@ -45,7 +45,7 @@ class DefaultController extends Controller
         $morceau = $em->getRepository(Morceau::class)->findAll();
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
         $morceauJSON = $serializer->serialize($morceau, 'json');
-        $file = '{"'."Morceau".':"'.$morceauJSON."}";
+        $file = '{"'."Morceau".'":'.$morceauJSON."}";
         file_put_contents('morceau.json', $file);
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($morceauJSON));
         return $response;
@@ -58,7 +58,7 @@ class DefaultController extends Controller
         $playlist = $em->getRepository(Playlist::class)->findAll();
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
         $playlistJSON = $serializer->serialize($playlist, 'json');
-        $file = '{"'."Playlist".':"'.$playlistJSON."}";
+        $file = '{"'."Playlist".'":'.$playlistJSON."}";
         file_put_contents('playlist.json', $file);
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($playlistJSON));
         return $response;
@@ -71,7 +71,7 @@ class DefaultController extends Controller
         $tag = $em->getRepository(Tag::class)->findAll();
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
         $tagJSON = $serializer->serialize($tag, 'json');
-        $file = '{"'."Tag".':"'.$tagJSON."}";
+        $file = '{"'."Tag".'":'.$tagJSON."}";
         file_put_contents('tag.json', $file);
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($tagJSON));
         return $response;
