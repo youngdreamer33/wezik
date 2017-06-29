@@ -2,6 +2,14 @@ we_zik_homepage:
     path:     /
     defaults: { _controller: WeZikBundle:Default:index }
 
+login:
+    path:     /login
+    defaults: { _controller: WeZikBundle:Security:login }
+
+info:
+    path:     /info
+    defaults: { _controller: WeZikBundle:Security:login }
+
 generate_user:
     path:     /user
     defaults: { _controller: WeZikBundle:Default:userToJSON }
