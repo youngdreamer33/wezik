@@ -42,16 +42,17 @@ class User
      */
     private $email;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="users", cascade={"persist"})
+     */
+    private $playlists;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="users", cascade={"persist"})
-     */
-    private $playlists;
 
     /**
      * Get id
@@ -149,23 +150,4 @@ class User
         return $this;
     }
 
-    /**
-     * Remove playlist
-     *
-     * @param \WeZikBundle\Entity\Playlist $playlist
-     */
-    public function removePlaylist(\WeZikBundle\Entity\Playlist $playlist)
-    {
-        $this->playlists->removeElement($playlist);
-    }
-
-    /**
-     * Get playlists
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlaylists()
-    {
-        return $this->playlists;
-    }
 }

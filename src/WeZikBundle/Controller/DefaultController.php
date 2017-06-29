@@ -157,9 +157,6 @@ class DefaultController extends Controller
     //Et les renvoyer sous format JSON ( dans un seul fichier )
     public function getAllPlaylistsAction(Request $request)
     {
-        //Probleme "A circular reference has been detected (configured limit: 1)" à regler avec ça .
-        $normalizer = new ObjectNormalizer();
-        //
         $em = $this->getDoctrine()->getManager();
         $playlists = $em->getRepository('WeZikBundle:Playlist')->findAll();
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
