@@ -50,6 +50,14 @@ getAllPlaylistsAction:
     path:     /get/playlists
     defaults: { _controller: WeZikBundle:Default:getAllPlaylists }
 
+getTaglistAction:
+    path:     /get/tag/{id_taglist}
+    defaults: { _controller: WeZikBundle:Default:getTaglist }
+
+getAllTaglistsAction:
+    path:     /get/taglists
+    defaults: { _controller: WeZikBundle:Default:getAllTaglists }
+
 getMorceauAction:
     path:     /get/morceau/{id_morceau}
     defaults: { _controller: WeZikBundle:Default:getMorceau }

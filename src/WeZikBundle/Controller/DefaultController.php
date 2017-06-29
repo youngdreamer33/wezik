@@ -165,9 +165,6 @@ class DefaultController extends Controller
         return $response;
     }
 
-
-
-
     //Fonction pour récuperer une playlist
     //Et la renvoyer sous format JSON
     public function getPlaylistAction(Request $request, $id_playlist=1)
