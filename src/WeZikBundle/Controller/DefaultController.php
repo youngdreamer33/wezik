@@ -22,7 +22,6 @@ class DefaultController extends Controller
         return $this->render('WeZikBundle:Default:index.html.twig');
     }
 
-
     //Convertir et récuperer les données de l'entité User sous format JSON
     public function userToJSONAction()
     {
