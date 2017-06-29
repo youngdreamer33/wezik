@@ -43,7 +43,7 @@ test123:
     defaults: { _controller: WeZikBundle:Default:testReturn123 }
 
 getPlaylistAction:
-    path:     /get/playlist
+    path:     /get/playlist/{id_playlist}
     defaults: { _controller: WeZikBundle:Default:getPlaylist }
 
 getAllPlaylistsAction:
