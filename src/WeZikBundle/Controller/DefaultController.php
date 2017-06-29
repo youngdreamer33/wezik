@@ -139,6 +139,35 @@ class DefaultController extends Controller
         return 0;
     }
 
+
+    //Fonction pour récuperer une taglist
+    //Et la renvoyer sous format JSON
+    public function getTaglistAction(Request $request, $id_taglist=1)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $taglist = $em->getRepository('WeZikBundle:Tag')->find($id_taglist);
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $taglistJSON = $serializer->serialize($taglist, 'json');
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($taglistJSON));
+        return $response;
+    }
+
+    //Fonction pour récuperer toutes les taglists
+    //Et les renvoyer sous format JSON ( dans un seul fichier )
+    public function getAllTaglistsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $taglists = $em->getRepository('WeZikBundle:Tag')->findAll();
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $taglistJSON = $serializer->serialize($taglists, 'json');
+        file_put_contents('taglist.json', $taglistJSON);
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($taglistJSON));
+        return $response;
+    }
+
+
+
+
     //Fonction pour récuperer une playlist
     //Et la renvoyer sous format JSON
     public function getPlaylistAction(Request $request, $id_playlist=1)
