@@ -1,9 +1,10 @@
-var app = angular.module("app", [
+var app = angular.module("JukeTubeApp", [
     "ui.router",
     "angularUtils.directives.dirPagination",
     "textAngular",
     "components",
     "services",
+    "filters",
     "ngCookies"
 ])
   

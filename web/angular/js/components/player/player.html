@@ -1,16 +1,4 @@
-<!doctype html>
-<html data-ng-app="JukeTubeApp">
-  <head>
-    <meta charset="utf-8"> 
-    <title>JukeTube</title>
-    <meta name="author" content="J. Thomas">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-  </head>
-  <body data-ng-controller="VideosController">
-
-    <div id="results">
+  <div id="results">
       <div class="video" data-ng-repeat="video in results" data-ng-click="queue(video.id, video.title)">
         <img class="video-image" data-ng-src="{{ video.thumbnail }}">
         <p class="video-title">{{ video.title }}</p>
@@ -54,9 +42,3 @@
         <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">Upcoming</a>
         <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
       </p>
-    </div>
-    <script src="angular.min.js"></script>
-    <script src="angular-local-storage.js"></script>
-    <script src="app.js"></script>
-  </body>
-</html>
