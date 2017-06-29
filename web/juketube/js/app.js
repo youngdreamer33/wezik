@@ -1,4 +1,4 @@
-angular.module("JukeTubeApp", [
+var app = angular.module("JukeTubeApp", [
     "ui.router",
     "angularUtils.directives.dirPagination",
     "textAngular",
@@ -9,9 +9,7 @@ angular.module("JukeTubeApp", [
 ])
   
 
- // Config
-
-  app.config( function ($httpProvider) {
+app.config( function ($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });
 
